@@ -1,2 +1,4 @@
 #!/bin/bash
-ls -1a --group-directories-first | awk '{ if ($0 ~ /\/$/) print $0","; else if ($0 ~ /^[.]/) print $0","; else print $0"," }' | paste -sd "" - | sed 's/,,/,/g; s/,$/\n/'
+
+
+
