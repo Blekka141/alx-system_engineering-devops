@@ -1,2 +1,2 @@
-#!/bin/bashh~
-rm [[*~]]
+#!/bin/bash
+rn *~
