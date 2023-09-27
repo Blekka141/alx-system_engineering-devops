@@ -1,2 +1,2 @@
 #!/bin/bashh~
-find . -maxdepth 1 -type f -name '*~' -exec rm -f {} \;
+find . -maxdepth 1 -type f -name '*~' -exec rm -f -- {} +
