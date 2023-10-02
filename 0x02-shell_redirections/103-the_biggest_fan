@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f1 | sort | uniq -c | sort -nr | awk '{print $2}' | head -11
+awk -F'\t' '{print $1}' your_log_file.tsv | sort | uniq -c | sort -nr | head -n 11 | awk '{print $2}'
