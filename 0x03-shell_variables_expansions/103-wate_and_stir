@@ -1,2 +1,0 @@
-#!/bin/bash
-echo $(( $(echo "$WATER" | tr "ewatera" "0123456") + $(echo "$STIR" | tr "t.ir" "0123") )) | tr "0123456789abcdef" "bestcholmnpqr"

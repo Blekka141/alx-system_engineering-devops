@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(( $(echo "$WATER" | tr "ewatera" "0123456") + $(echo "$STIR" | tr "t.ir" "0123") )) | tr "0123456789abcdef" "bestcholmnpqr"
+printf "%o\n" $(( $((5#$(echo $WATER | tr water 01234))) + $((5#$(echo $STIR | tr stir. 01234))) )) | tr 01234567 bestchol
