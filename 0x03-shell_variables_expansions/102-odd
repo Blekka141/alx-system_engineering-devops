@@ -1,2 +1,2 @@
 #!/bin/bash
-paste -d'\n' - - <&0 | cut -f1
+sed -n 'p;n'
