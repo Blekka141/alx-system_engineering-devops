@@ -1,0 +1,49 @@
+Task 2: Secured and Monitored Web Infrastructure Diagram
+
+Diagram Elements:
+
+    Users: Represented as individuals using a web browser to access the website.
+    DNS Query: Shows the process of resolving the domain name www.foobar.com to an IP address.
+    DNS Server: Translates www.foobar.com into the IP address of the load balancer.
+    Firewalls: Placed in front of the load balancer, web servers, and database servers to control incoming and outgoing network traffic based on predetermined security rules.
+    Load Balancer (HAproxy): Distributes incoming web traffic across multiple servers to ensure no single server bears too much load.
+    Web Servers (Nginx): Serves web content to users. Encrypted connections are terminated here if SSL is implemented at this level.
+    Application Servers: Run the application logic, processing user requests sent from the web servers.
+    Database Servers (MySQL): Stores and manages data for the web application. A primary-replica setup is used for redundancy and scalability.
+    SSL Certificate: Installed to encrypt data transmitted between the user’s browser and the web servers, ensuring secure communications.
+    Monitoring System: Collects and analyzes data from various components of the infrastructure to monitor performance, detect failures, and trigger alerts.
+
+Your diagram should visually link these elements, clearly depicting the flow of requests from the user to the server and the role of each security and monitoring component in the infrastructure.
+Explanation for Each Component
+
+    Firewalls: Act as a barrier between your internal network and incoming traffic from external sources (the internet) to block malicious traffic like DDoS attacks and unauthorized access.
+
+    SSL/TLS Certificate: Encrypts data transmitted between the client and the server, ensuring sensitive information (like personal data and credit card numbers) is securely exchanged.
+
+    Monitoring Clients: Tools or agents installed on the server to continuously monitor its health and performance. They collect data on resource usage, application performance, and security events.
+
+Considerations
+
+    Why Each Element Is Added: Each component added to the infrastructure serves a purpose, from enhancing security (firewalls and SSL/TLS) to ensuring high availability (load balancers) and providing insights into system health and performance (monitoring tools).
+
+    Firewalls: Explain their placement and the type of rules that might be implemented for web traffic, database access, etc.
+
+    HTTPS: Discuss the importance of serving traffic over HTTPS not only for security but also for SEO and user trust.
+
+    Monitoring: Elaborate on what metrics or logs would be important to monitor (e.g., CPU usage, memory usage, application errors, traffic spikes) and how these insights contribute to proactive management of the web infrastructure.
+
+Issues with This Infrastructure
+
+    SSL Termination: Discuss potential security concerns if SSL is terminated at the load balancer and traffic between the load balancer and web servers is unencrypted.
+
+    Single Write Database Server: Explore the implications of having a single database server that handles all write operations, considering availability and scalability.
+
+    Homogeneous Server Components: Address potential risks of running identical software stacks across all servers, considering vulnerability to widespread software exploits.
+
+Creating the Diagram
+
+For crafting your diagram:
+
+    Utilize a diagramming tool that allows for clear representation and labeling of different components and their connections.
+    Ensure clarity in illustrating how external traffic is filtered and managed through firewalls, load balancers, and finally to the servers.
+    Highlight the flow of encrypted data and where monitoring points are placed within the infrastructure.

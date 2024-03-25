@@ -1,0 +1,40 @@
+Task 0: Simple Web Stack Diagram
+
+Diagram Elements:
+
+    User: Represents the person trying to access the website via a web browser.
+    DNS Query: Shows the user's browser sending a DNS request for www.foobar.com.
+    DNS Server: Resolves www.foobar.com to the server IP 8.8.8.8.
+    Web Server (Nginx): Receives HTTP requests from the user's browser.
+    Application Server: Processes the incoming requests from the web server, executing the application logic.
+    Database (MySQL): Stores and retrieves data for the application as requested by the application server.
+    Domain Name (foobar.com): Configured with a WWW record pointing to 8.8.8.8.
+
+Your diagram should visually connect these elements, showing the flow from the user making a request to receiving a response from the web server.
+Explanation for Each Component
+
+    Server: A physical or virtual computing device running services (like Nginx and MySQL) to serve web content over the internet. It processes incoming web requests and sends back responses.
+
+    Domain Name: Acts as a human-friendly address (like www.foobar.com) that users can type into their browser instead of an IP address. It's essential for easy web navigation.
+
+    DNS Record (WWW): A type of DNS record that maps the subdomain www of foobar.com to an IP address (8.8.8.8), allowing browsers to find the server hosting the website.
+
+    Web Server (Nginx): Serves web pages to users' browsers. It listens for incoming requests on HTTP/HTTPS and responds with the requested web content.
+
+    Application Server: Hosts the application's logic (backend code) that processes user requests, interacts with the database, and decides what content to serve to the user through the web server.
+
+    Database (MySQL): Stores all the data needed by the website (like user profiles, content, and more) and provides it to the application server upon request.
+
+Issues with This Infrastructure
+
+    Single Point of Failure (SPOF): If the single server goes down, the entire website becomes inaccessible.
+    Downtime for Maintenance: Updating software or hardware requires taking the server offline, leading to website downtime.
+    Scalability: The infrastructure can handle only a limited amount of traffic. If the site becomes too popular, it won't be able to serve all requests efficiently.
+
+Creating the Diagram
+
+For creating the diagram:
+
+    Use any diagram tool you're comfortable with (e.g., draw.io, Lucidchart, Microsoft Visio).
+    Ensure each component is clearly labeled.
+    Show the direction of data flow with arrows.

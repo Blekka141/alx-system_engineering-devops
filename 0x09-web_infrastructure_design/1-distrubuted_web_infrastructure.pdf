@@ -1,0 +1,40 @@
+Task 1: Distributed Web Infrastructure Diagram
+
+Diagram Elements:
+
+    Users: Individuals accessing the website through their browsers.
+    DNS Query: The process where users' browsers request the IP address of www.foobar.com.
+    DNS Server: Resolves the domain name www.foobar.com to the IP address of the load balancer.
+    Load Balancer (HAproxy): Distributes incoming traffic across the two web servers to balance load and enhance reliability.
+    Web Servers (Nginx): Two servers configured to serve web content. They receive requests from the load balancer.
+    Application Servers: Host the application logic. Each web server is connected to its own application server.
+    Database (MySQL): A primary-replica setup where one database serves as the primary (master) node and the other as the replica (slave) node for redundancy and read scalability.
+
+Ensure your diagram shows the flow from the user making a request through the DNS system, to the load balancer, and then to the servers, illustrating how responses are generated and sent back to the user.
+Explanation for Each Component
+
+    Additional Servers: Increases the infrastructure's capacity to handle high traffic and ensures redundancy, improving reliability and uptime.
+
+    Load Balancer (HAproxy): Distributes incoming traffic among servers, enhancing the website's ability to handle more users simultaneously. It helps in achieving high availability by redirecting traffic in case one server fails.
+
+    Distribution Algorithm: The method used by the load balancer to distribute traffic (e.g., round-robin, least connections). This choice affects how effectively the load is balanced across the servers.
+
+    Active-Active vs. Active-Passive: In an Active-Active setup, all servers are handling traffic at the same time, maximizing resource utilization. In Active-Passive, one or more servers are on standby and only become active if the primary server(s) fail.
+
+    Primary-Replica Database Cluster: Ensures data availability and load balancing for read operations. The primary node handles write operations, while the replica(s) handle read operations, improving read performance and serving as a backup in case the primary fails.
+
+Issues with This Infrastructure
+
+    Single Points of Failure (SPOF): Identify any components that, if they failed, would take down the entire system (e.g., the load balancer if there's only one without a backup).
+
+    Security Issues: Without firewalls or encrypted connections (HTTPS), sensitive data could be at risk, and the system could be vulnerable to attacks.
+
+    Lack of Monitoring: Without proper monitoring tools, it's difficult to detect and address performance bottlenecks, system failures, or security breaches in a timely manner.
+
+Creating the Diagram
+
+When creating your diagram:
+
+    Use a diagramming tool where you can clearly represent each component and its interactions with others.
+    Label each part of your infrastructure clearly.
+    Show the direction of traffic flow and the relationship between different components (e.g., users to DNS, DNS to load balancer, load balancer to web servers, etc.)

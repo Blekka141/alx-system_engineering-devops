@@ -1,0 +1,40 @@
+Task 3: Scale Up Web Infrastructure Diagram
+
+Diagram Elements:
+
+    Users: People accessing the website through their web browsers.
+    DNS Query: Represents the process of translating www.foobar.com into the IP address of the primary load balancer.
+    Primary Load Balancer (HAproxy): Directs incoming traffic to the web servers and is now part of a cluster with a secondary load balancer for high availability.
+    Secondary Load Balancer (HAproxy): Acts as a backup to the primary load balancer, ready to take over in case of failure, ensuring continuous traffic management.
+    Web Servers (Nginx): Dedicated servers for serving web content, potentially increased in number to distribute the load further.
+    Application Servers: Separate servers for running application logic, improving the application's ability to handle more concurrent users.
+    Database Servers (MySQL): Split into separate servers for handling writes (Primary) and reads (Replicas), enhancing database access and reliability.
+    Firewalls: Positioned in front of each server group (web, application, database) to secure and control access.
+    SSL Certificate: Ensures encrypted communication between the users and the web servers.
+    Monitoring System: Expanded to cover all components comprehensively, monitoring performance, availability, and security.
+
+Ensure your diagram clearly illustrates the expanded infrastructure, showing the enhanced pathways for traffic flow, dedicated resources for each component, and the redundancy measures in place.
+Explanation for Each Component
+
+    Additional Load Balancer: Introducing a second load balancer in a cluster configuration with the primary ensures no single point of failure in traffic management, enabling an Active-Active or Active-Passive setup for high availability.
+
+    Dedicated Servers for Each Component: Separating the web, application, and database layers onto their dedicated servers allows each component to be scaled independently based on demand, improving performance and reliability.
+
+    Expanded Monitoring: With the infrastructure's complexity, a comprehensive monitoring solution is essential for proactive management, enabling quick detection and resolution of performance bottlenecks or failures.
+
+Considerations
+
+    Why Each Element Is Added: Discuss the rationale behind each new component or architectural decision, focusing on the benefits of separation of concerns, redundancy for high availability, and scalability.
+
+    Active-Active vs. Active-Passive Load Balancing: Explain the choice between these two setups for the load balancers, considering factors like resource utilization, complexity, and failover time.
+
+    Database Scalability: Address the strategies for scaling the database, such as sharding or replication, and the impact of these strategies on application architecture.
+
+Issues with This Infrastructure
+
+    Complexity: As the infrastructure grows, so does its complexity, potentially making management and troubleshooting more challenging.
+
+    Cost: Scaling up involves additional hardware, software, and operational costs. It's important to balance performance and availability needs with budget constraints.
+
+    Database Write Scalability: Even with read replicas, write operations can still become a bottleneck if the primary database server's capacity is exceeded.
+
