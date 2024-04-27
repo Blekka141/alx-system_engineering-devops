@@ -47,9 +47,38 @@ To ensure that your scripts function correctly:
 - [RFC 7231 - HTTP/1.1](https://tools.ietf.org/html/rfc7231)
 - [RFC 7540 - HTTP/2](https://tools.ietf.org/html/rfc7540)
 
-## Usage
+## Quiz Answers
 
-Each script is standalone and designed to be run directly on a server. Example usage for each script is detailed within the script files themselves, providing clarity on their operation and purpose.
+### Question #0: A DNS A record translates to
+- an IP
+
+### Question #1: The main role of DNS is to
+- translate domain name into IP address
+
+### Question #2: The main role of a web server is to
+- serve static content
+
+### Question #3: What is TTL within the context of DNS
+- a time period when DNS query results are cached
+
+### Question #4: A HTTP POST request is to
+- submit data
+
+### Question #5: A HTTP GET request is to
+- request data
+
+### Question #6: Why do web servers usually use child processes?
+- So that the web server can dynamically change the number of child process to accommodate the volume of requests to be processed
+
+### Question #7: A web server is
+- a software
+
+### Question #8: A DNS CNAME record translates to
+- a domain
+
+### Question #9: What was one of the most important reasons for which DNS was created?
+- because humans are not good at remembering long sequences of numbers (IP address)
+
 
 May your deployment be smooth and your server loads light!
 
