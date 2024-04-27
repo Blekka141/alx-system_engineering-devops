@@ -52,3 +52,15 @@ puts ARGV[0].scan(/127.0.0.[0-9]/).join
 ./example.rb 127.0.0.2  # Outputs: 127.0.0.2
 ./example.rb 127.0.0.1  # Outputs: 127.0.0.1
 ./example.rb 127.0.0.a  # Outputs nothing due to regex filter
+
+## Quiz Answers
+
+### Question #0: What is the /Scho*l/ regexp matching?
+- Schoool
+
+### Question #1: What is the /school/ regexp matching?
+- school
+
+### Question #2: What is the /Scho.l/ regexp matching?
+- Scho.l
+- School

@@ -67,3 +67,19 @@ julien@ubuntu:/tmp$ head -n 1 12-file_type
 #!/bin/bash
 julien@ubuntu:/tmp$ chmod u+x 12-file_type
 julien@ubuntu:/tmp$ ./12-file_type
+
+
+## Quiz Answers
+
+###Question #0: How do you change directory on Linux?
+- cd
+
+### Question #1: What command would you use to list files on Linux?
+- ls
+
+### Question #2: What does LTS stand for?
+- Long Term Support
+
+### Question #3: What does RTFM stand for?
+- Read The F** Manual
+

@@ -37,3 +37,26 @@ Each task includes a detailed diagram and an explanation of the web infrastructu
 ## Conclusion
 
 Through this project, we aim to solidify understanding of web infrastructure components and their interactions. By tackling various design challenges, the goal is to prepare for designing and managing the infrastructure of scalable, secure, and efficient web applications.
+
+## Quiz Answers
+
+### Question #0: What is TCP/IP?
+- Transmission Control Protocol/Internet Protocol, is a suite of communications protocols used to interconnect network devices on the Internet or any private network.
+
+### Question #1: What is a codebase?
+- Is the collection of source code that is used to build a software system.
+
+### Question #2: What is a server?
+- A server is a device, a virtual device or computer program or providing functionality for other programs or devices, called “clients”.
+
+### Question #3: What is HTTPS?
+- A version of HTTP that secure the traffic between your browser and the website by encrypting it.
+
+### Question #4: What is a DNS?
+- A system to translate domain names into IP addresses.
+
+### Question #5: What is a web server?
+- A web server is a software that serves web pages to clients upon their request, it does this over the protocol HTTP.
+
+### Question #6: What is a database?
+- Is a collection of information that is stored and organized so that it can be easily accessed, updated and managed.

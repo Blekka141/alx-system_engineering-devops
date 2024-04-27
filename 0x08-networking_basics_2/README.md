@@ -53,3 +53,10 @@ Shellcheck is a static analysis tool for shell scripts that helps to identify sy
   ```bash
   sudo apt-get install shellcheck
 
+## Quiz Answers
+
+### Question #0: What is localhost?
+- A hostname that means this computer
+
+### Question #1: What is 0.0.0.0?
+- All IPv4 addresses on the local machine

@@ -69,3 +69,26 @@ julien@ubuntu:/tmp$ head -n 1 12-file_type
 #!/bin/bash
 julien@ubuntu:/tmp$ chmod u+x 12-file_type
 julien@ubuntu:/tmp$ ./12-file_type
+
+## Quiz Answers
+
+### Question #0: Which symbol should I use to escape a special character?
+- \
+
+### Question #1: Which symbol should I use to redirect the error output to the standard output?
+- 2>&1
+
+### Question #2: Which symbol should I use to redirect the standard output to a file (overwrite the file)?
+- >
+
+### Question #3: Which command should I use to display the last 11 lines of a file?
+- tail -n 11 my_file
+
+### Question #4: Which command should I use to display the entire file content?
+- cat
+
+### Question #5: Which symbol should I use to redirect the standard output to a file (appending to the file)?
+- >>
+
+### Question #6: Which symbol should I use to start a comment?
+- #

@@ -71,3 +71,17 @@ julien@ubuntu:/tmp$ head -n 1 12-file_type
 #!/bin/bash
 julien@ubuntu:/tmp$ chmod u+x 12-file_type
 julien@ubuntu:/tmp$ ./12-file_type
+
+## Quiz Answers
+
+### Question #0: Which command should I use to display the exit code of the previous command?
+- echo $?
+
+### Question #1: Which command should I use to display a variable?
+- echo $MYVAR
+
+### Question #2: What is the variable name who contains the previous working directory path?
+- OLDPWD
+
+### Question #3: Which command should I use to define a new command push for pushing in Github?
+- alias push="git push"
