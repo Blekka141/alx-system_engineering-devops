@@ -4,7 +4,7 @@
 apt-get install -y software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get update
-apt-get install -y haproxy
+apt-get install -y haproxy=1.8.\*
 
 echo "ENABLED=1" >> /etc/default/haproxy
 mv /etc/haproxy/haproxy.cfg{,.original}
@@ -37,4 +37,4 @@ listen hbnb
     server 530845-web-02 100.24.72.30:80 check
 " >> /etc/haproxy/haproxy.cfg
 
-sudo service haproxy start
+service haproxy start
