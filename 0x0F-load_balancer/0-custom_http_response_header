@@ -1,15 +1,30 @@
 #!/usr/bin/env bash
-# Configure Nginx so that its HTTP response contains a custom header
-# HTTP response contains a custom header (on web-01 and web-02)
-var=$(hostname)
-new_string="error_page 404 \/custom_404.html;\n location \/redirect_me {\n return 301 \$scheme:\/\/www.google.com;"
-new_string2="server {\n\tadd_header X-Served-By $var;"
+# This script configures an Ubuntu server with Nginx to add a custom header in its HTTP responses.
 
+# Variables
+HOSTNAME=$(hostname)
+HEADER_CONFIG="add_header X-Served-By $HOSTNAME;"
+
+# Update system and install Nginx
 apt-get update -y
-apt-get install nginx -y
+apt-get install -y nginx
+
+# Configure Nginx to serve a simple HTML page
 echo "Hello World!" > /usr/share/nginx/html/index.html
+
+# Add custom 404 page
 mkdir -p /var/www/html
 echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
-sudo sed -i -E "s/^[^#]+location \/ \{/$new_string/" /etc/nginx/sites-available/default
-sudo sed -i -E "s/^server \{/$new_string2/" /etc/nginx/sites-available/default
-sudo service nginx start
+
+# Modify Nginx configuration to add the custom header
+sed -i "/server_name _;/a \\\t$HEADER_CONFIG" /etc/nginx/sites-available/default
+
+# Correctly configure location blocks and custom 404 error handling
+sed -i "s#error_page 404 /404.html;#error_page 404 /custom_404.html;#g" /etc/nginx/sites-available/default
+sed -i "s#location / {#location / {\\n\ttry_files \$uri \$uri/ =404;#g" /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+systemctl restart nginx
+
+# Output for verification
+echo "Nginx has been configured to add the custom header X-Served-By: $HOSTNAME"
