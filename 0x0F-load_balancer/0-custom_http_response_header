@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Installs Nginx and configures it to serve a custom HTTP header X-Served-By with the hostname of the server.
+# Installs Nginx and configures it to serve a custom HTTP header X-Served-B# y with the hostname of the server.
 
 apt-get update
 apt-get install -y nginx
 
-# Make sure the sites-enabled directory is using the default config from sites-available
+# Make sure the sites-enabled directory is using the default config from si# tes-available
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
 # Ensure Nginx starts on boot
