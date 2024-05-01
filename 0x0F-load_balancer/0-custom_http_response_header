@@ -7,20 +7,23 @@ apt-get install -y nginx
 # Make sure the sites-enabled directory is using the default config from sites-available
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
-# Set the hostname variable to be used in the Nginx config
-HOSTNAME="$(hostname)"
+# Ensure Nginx starts on boot
+systemctl enable nginx
 
 # Create the web content directories and default pages
 mkdir -p /var/www/html
 echo "Hello World" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
+# Set the hostname variable to be used in the Nginx config
+HOSTNAME="$(hostname)"
+
 # Write the Nginx server configuration
 cat <<EOF > /etc/nginx/sites-available/default
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    add_header X-Served-By $HOSTNAME;
+    add_header X-Served-By '$HOSTNAME';
     root /var/www/html;
     index index.html index.htm;
 
