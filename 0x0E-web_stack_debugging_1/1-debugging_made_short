@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
-# Changes port in Nginx configuration and restarts the service
+# Changes port in Nginx configuration and restarts the service if not running
 
 # Change the server port from 8080 to 80 in the Nginx configuration
 sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-enabled/default
 
-# Restart the Nginx service to apply changes
-sudo systemctl restart nginx
+# Check if Nginx is running
+if ! systemctl is-active --quiet nginx; then
+    # Restart the Nginx service if not running
+    sudo systemctl restart nginx
+fi
