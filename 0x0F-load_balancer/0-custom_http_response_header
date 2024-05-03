@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
-# Installs Nginx and configures it to serve a custom HTTP header X-Served-B# y with the hostname of the server.
+# Installs Nginx and configures it to serve a custom HTTP header X-Served-By with the hostname of the server.
 
+# Update package index
 apt-get update
-apt-get install -y nginx
 
-# Make sure the sites-enabled directory is using the default config from si# tes-available
-ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+# Install Nginx
+apt-get install -y nginx
 
 # Ensure Nginx starts on boot
 systemctl enable nginx
 
-# Create the web content directories and default pages
+# Create web content directories and default pages
 mkdir -p /var/www/html
 echo "Hello World" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 
 # Set the hostname variable to be used in the Nginx config
-HOSTNAME="$(hostname)"
+HOSTNAME=$(hostname)
 
 # Write the Nginx server configuration
 cat <<EOF > /etc/nginx/sites-available/default
@@ -41,4 +41,3 @@ EOF
 
 # Reload Nginx to apply changes
 systemctl restart nginx
-systemctl enable nginx
