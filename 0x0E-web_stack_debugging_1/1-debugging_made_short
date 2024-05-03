@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Changes port in Nginx configuration and restarts the service if not running
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx restart
+if ! sudo service nginx status | grep -q "nginx is running"; then sudo service nginx restart; fi
+
 
 
 
