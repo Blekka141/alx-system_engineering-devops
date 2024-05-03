@@ -5,7 +5,7 @@
 sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-enabled/default
 
 # Check if Nginx is running
-if ! systemctl is-active --quiet nginx; then
+if ! service nginx status | grep -q "nginx is running"; then
     # Restart the Nginx service if not running
-    sudo systemctl restart nginx
+    sudo service nginx restart
 fi
