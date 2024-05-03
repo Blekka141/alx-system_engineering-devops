@@ -5,38 +5,31 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# Ensures the script executes operations with superuser privileges
-sudo -v
-
 # Update system and install necessary packages
 echo "Installing necessary packages..."
 sudo apt-get update && sudo apt-get install -y software-properties-common haproxy
 
-# Enable HAProxy to start on boot and ensure it is enabled
-echo "ENABLED=1" | sudo tee /etc/default/haproxy > /dev/null
-
-# Backup the current HAProxy configuration
-sudo mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
-
 # Create a new HAProxy configuration file
 echo "Configuring HAProxy..."
 cat <<EOF | sudo tee /etc/haproxy/haproxy.cfg > /dev/null
+# HAProxy configuration file
 global
-    log 127.0.0.1 local0 notice
-    maxconn 2000
+    log /dev/log local0
+    log /dev/log local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin
     user haproxy
     group haproxy
+    daemon
 
 defaults
     log     global
     mode    http
     option  httplog
     option  dontlognull
-    retries 3
-    option redispatch
-    timeout connect  5000
-    timeout client  10000
-    timeout server  10000
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
     errorfile 400 /etc/haproxy/errors/400.http
     errorfile 403 /etc/haproxy/errors/403.http
     errorfile 408 /etc/haproxy/errors/408.http
@@ -45,14 +38,23 @@ defaults
     errorfile 503 /etc/haproxy/errors/503.http
     errorfile 504 /etc/haproxy/errors/504.http
 
-listen hbnb
-    bind 0.0.0.0:80
+frontend https-frontend
+    bind *:443 ssl crt /etc/haproxy/certs/www.lekka141.tech.pem
     mode http
-    stats enable
-    stats uri /haproxy?stats
+    default_backend web-backend
+    option http-server-close
+    option forwardfor except 127.0.0.0/8
+    http-request set-header X-Forwarded-Port %[dst_port]
+    http-request add-header X-Forwarded-Proto https if { ssl_fc }
+
+frontend http-in
+    bind *:80
+    mode http
+    redirect scheme https code 301 if !{ ssl_fc }
+
+backend web-backend
+    mode http
     balance roundrobin
-    option httpclose
-    option forwardfor
     server web-01 54.236.8.64:80 check
     server web-02 100.24.72.30:80 check
 EOF
@@ -62,12 +64,3 @@ echo "Restarting HAProxy..."
 sudo systemctl restart haproxy
 sudo systemctl enable haproxy
 echo "HAProxy has been configured and restarted. It is now balancing requests between web-01 and web-02."
-
-# Verify configuration and check for the mention of web servers in the startup logs
-echo "Verifying HAProxy configuration..."
-sudo haproxy -c -V -f /etc/haproxy/haproxy.cfg
-echo "Configuration check complete."
-
-# Outputting final server checks to ensure servers are recognized
-echo "HAProxy is configured to balance traffic between the following servers:"
-grep 'server web' /etc/haproxy/haproxy.cfg | awk '{print $2 " at IP: " $3}'
