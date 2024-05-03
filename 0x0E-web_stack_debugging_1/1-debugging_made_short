@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Changes port in Nginx
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx restart
-kill -9 "$(cat /var/run/nginx.pid)"
+# Changes port in Nginx configuration and restarts the service
+
+# Change the server port from 8080 to 80 in the Nginx configuration
+sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-enabled/default
+
+# Restart the Nginx service to apply changes
+sudo systemctl restart nginx
