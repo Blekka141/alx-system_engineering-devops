@@ -4,8 +4,4 @@
 # Change the server port from 8080 to 80 in the Nginx configuration
 sudo sed -i 's/listen 8080;/listen 80;/g' /etc/nginx/sites-enabled/default
 
-# Check if Nginx is running
-if ! service nginx status | grep -q "nginx is running"; then
-    # Restart the Nginx service if not running
-    sudo service nginx restart
-fi
+
