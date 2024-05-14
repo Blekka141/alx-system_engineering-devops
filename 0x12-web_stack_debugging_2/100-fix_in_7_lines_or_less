@@ -1,6 +1,7 @@
-#!/bin/bash
-sed -i 's/user .*/user nginx;/' /etc/nginx/nginx.conf
-if [ $(pgrep -u root nginx) ]; then
-    pkill -u root nginx
-    nginx
-fi
+#!/usr/bin/env bash
+# Fixes the issue with the server
+sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -i 's/listen 80 default_server;/listen 8080 default_server;/' /etc/nginx/sites-available/default
+sed -i 's/listen \[::\]:80 default_server;/listen [::]:8080 default_server;/' /etc/nginx/sites-available/default
+pkill -f nginx
+nginx -g 'daemon off;'
