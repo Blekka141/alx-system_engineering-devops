@@ -53,12 +53,6 @@ By the end of this project, you should be able to explain the following concepts
 - Use `get` to access dictionary values by key to avoid exceptions if the key doesn't exist
 - Code should not be executed when imported (use `if __name__ == "__main__":`)
 
-## Tasks
-
-### 0. Gather Data from an API
-
-Write a Python script that uses a REST API to retrieve information about an employee's TODO list progress for a given employee ID.
-
 #### Requirements:
 
 - Use the `urllib` or `requests` module
@@ -69,3 +63,32 @@ Write a Python script that uses a REST API to retrieve information about an empl
     - `NUMBER_OF_DONE_TASKS`: number of completed tasks
     - `TOTAL_NUMBER_OF_TASKS`: total number of tasks, which is the sum of completed and non-completed tasks
   - Second and subsequent lines: display the title of completed tasks with one tabulation and one space before each `TASK_TITLE`
+
+## Tasks 📃
+
+### 0. Gather data from an API
+**Script:** `0-gather_data_from_an_API.py`  
+**Description:** Python script that returns information on the to-do list progress of a given employee ID.  
+**Usage:** `python3 0-gather_data_from_an_API.py <employee ID>`  
+**Output:** `Employee <employee name> is done with tasks(<# completed tasks>/<total # tasks>):`
+
+### 1. Export to CSV
+**Script:** `1-export_to_CSV.py`  
+**Description:** Python script exports to-do list information of a given employee ID to CSV format.  
+**Usage:** `python3 1-export_to_CSV.py <employee ID>`  
+**File name:** `<user id>.csv`  
+**Format:** `"<user id>","<username>","<task completed status>","<task title>"`
+
+### 2. Export to JSON
+**Script:** `2-export_to_JSON.py`  
+**Description:** Python script that exports to-do list information of a given employee ID to JSON format.  
+**Usage:** `python3 2-export_to_JSON.py <employee ID>`  
+**File name:** `<user id>.json`  
+**Format:** `{ "<user id>": [ {"task": "<task title>", "completed": <task completed status>, "username": "<username>"} }, ... ]}`
+
+### 3. Dictionary of list of dictionaries
+**Script:** `3-dictionary_of_list_of_dictionaries.py`  
+**Description:** Python script that exports to-do list information for all employees to JSON format.  
+**Usage:** `python3 3-dictionary_of_list_of_dictionaries.py`  
+**File name:** `todo_all_employees.json`  
+**Format:** `{ "<user id>": [ {"username": "<username>", "task": "<task title>", "completed": <task completed status>}, {"username": "<username>", "task": "<task title>", "completed": <task completed status>}, ... ], "<user id>": [ {"username": "<username>", "task": "<task title>", "completed": <task completed status>}, {"username": "<username>", "task": "<task title>", "completed": <task completed status>}, ... ]}`
