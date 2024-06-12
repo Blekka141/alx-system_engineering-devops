@@ -3,7 +3,7 @@
 
 pid=$(pgrep -f 'gunicorn')
 if [ -n "$pid" ]; then
-    kill -HUP $pid
+    kill -HUP "$pid"
     echo "Gunicorn gracefully reloaded."
 else
     echo "Gunicorn is not running."
