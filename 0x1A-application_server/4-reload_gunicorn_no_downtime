@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Reload Gunicorn gracefully without downtime
 
-pid=$(pgrep -f 'gunicorn')
-if [ -n "$pid" ]; then
-    kill -HUP "$pid"
+pids=$(pgrep -f 'gunicorn')
+if [ -n "$pids" ]; then
+    echo "$pids" | xargs kill -HUP
     echo "Gunicorn gracefully reloaded."
 else
     echo "Gunicorn is not running."
